@@ -45,6 +45,9 @@
       border: none;
       outline: none;
       border-radius: 10px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
     }
     .may{
       padding: 4px 35px;
@@ -73,6 +76,9 @@
       background-color: #4C1474 !important;
       color: white !important;
       border: none;
+      display: flex;
+      align-items: center;
+      justify-content: center;
       text-decoration: none;
       outline: none;
       border-radius: 10px;
@@ -400,6 +406,9 @@
     outline: none;
     border-radius: 8px;
     padding: 10px;
+  }
+  a{
+    text-decoration: none;
   }
   .offcanvas{
     width: 270px !important;
