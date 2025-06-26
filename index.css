@@ -38,7 +38,7 @@
       width: 500px;
     }
     .som button,.car button,.eyo button{
-      padding: 8px 15px;
+      padding: 8px 32px;
       font-weight: 500;
       background-color: white;
       color: #4C1474;
@@ -67,12 +67,13 @@
     .miss button{
       margin-top: 40px;
     }
-    form button,.tom button,.lol button,.amo,.miss button,.fii,.yay button,.mes,.mumu button,.ham button{
-      padding: 8px 12px;
+    form a,.tom button,.lol button,.amo,.miss button,.fii,.yay button,.mes,.mumu button,.ham button{
+      padding: 8px 32px;
       font-weight: 500;
       background-color: #4C1474 !important;
       color: white !important;
       border: none;
+      text-decoration: none;
       outline: none;
       border-radius: 10px;
     }
@@ -401,7 +402,7 @@
     padding: 10px;
   }
   .offcanvas{
-    width: 240px !important;
+    width: 250px !important;
     height: 350px;
   }
   .doo{
@@ -482,8 +483,7 @@
         margin-top: -20px;
       }
       .aba h1{
-        font-size: 60px;
-        line-height: 90px;
+        font-size: 55px;
       }
       .nas{
         margin-top: 30px;
@@ -501,8 +501,12 @@
       font-size: 11px;
     }
     .call{
-      font-size: 12px;
+      font-size: 14px;
       padding-top: 3px;
+    }
+    .caller{
+      margin-top: -24px;
+      font-size: 13px;
     }
     .idan h2{
       font-size: 18px;
