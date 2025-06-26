@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Rayann Care</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.6/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-4Q6Gf2aSP4eDXB8Miphtr37CMZZQ5oXLH2yaXMJ2w8e2ZtHTl7GptT4jmndRuHDT" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css">
+ <link rel="stylesheet" href="index.css">
+ <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/17.0.19/css/intlTelInput.min.css" />
+ <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/17.0.19/css/intlTelInput.css" />
+</head>
+<body>
+    <div class="overflow-x-hidden">
+        <div>
+            <nav class="navbar navbar-expand-lg bg-body-tertiary fixed-top">
+                <div class="container-fluid">
+                    <a class="navbar-brand" href="#">
+                        <img src="./images/image 1.png" alt="">
+                    </a>
+                    <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasRight" aria-controls="offcanvasRight">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="36" height="36" fill="currentColor" class="bi bi-list"
+                        viewBox="0 0 16 16">
+                        <path fill-rule="evenodd"
+                        d="M2.5 12a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5m0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5m0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5" />
+                    </svg>
+                    </button>
+                    <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasRight" aria-labelledby="offcanvasRightLabel">
+                        <div class="offcanvas-header">
+                            <h5 class="offcanvas-title" id="offcanvasNavbarLabel"></h5>
+                            <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+                        </div>
+                        <div class="offcanvas-body">
+                            <ul class="navbar-nav align-items-center justify-content-end flex-grow-1 pe-3">
+                            <li class="nav-item">
+                                <a class="nav-link active" aria-current="page" href="index.html">Home</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="about.html">About Us</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="service.html">Services</a>
+                            </li>
+                            </ul>
+                            <form class="d-flex gap-3 aso" role="search">
+                                <a href="https://rayanncare.clientsecure.me/"><button>Book an Appointment</button></a>
+                                <a href="https://rayanncare.clientsecure.me/"><button class="jah">Signin</button></a>
+                            </form>
+                        </div>
+                    </div>
+            </nav>   
+            <div class="section"></div>    
+            <div class="section">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-12 col-md-12 col-lg-5">
+                            <div class="mumu">
+                                <h1>Choose a Service</h1>
+                                <p class="pt-3">What are you interested in?</p>
+                                <div class="pt-3">
+                                    <div class="d-flex gap-4">
+                                        <input type="radio" name="" id="">
+                                        <label for="">Evaluation</label>
+                                    </div>
+                                    <div class="d-flex gap-4 pt-4">
+                                        <input type="radio" name="" id="">
+                                        <label for="">Mini EMDR Intensives</label>
+                                    </div>
+                                    <div class="d-flex gap-4 pt-4">
+                                        <input type="radio" name="" id="">
+                                        <label for="">Supervision</label>
+                                    </div>
+                                    <div class="pt-5 ms-3">
+                                        <button>Submit</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-12 col-md-12 col-lg-7 nas">
+                            <div>
+                                <img src="./images/doc.png" width="100%" alt="">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="section"></div>
+        </div>  
+    </div>
+ <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.6/dist/js/bootstrap.bundle.min.js" integrity="sha384-j1CDi7MgGQ12Z7Qab0qlWQ/Qqz24Gc6BM0thvEMVjHnfYGF0rmFCozFSxQBxwHKO" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/17.0.19/js/intlTelInput.min.js"></script>
+<script>
+  const input = document.querySelector("#phone");
+
+  window.intlTelInput(input, {
+    initialCountry: "ng", 
+    preferredCountries: ["ng", "gh", "us", "gb"],
+    utilsScript: "https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/17.0.19/js/utils.js"
+  });
+</script>
+</body>
+</html>
