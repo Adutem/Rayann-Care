@@ -70,7 +70,7 @@
     .miss button{
       margin-top: 40px;
     }
-    form a,.tom button,.lol button,.amo,.miss button,.fii,.yay button,.mes,.mumu button,.ham button{
+    form a,.tom button,.lol button,.amo,.miss button,.fii,.yay button,.mes,.mumu button,.ham button,.bel button{
       padding: 8px 32px;
       font-weight: 500;
       background-color: #4C1474 !important;
@@ -82,6 +82,11 @@
       text-decoration: none;
       outline: none;
       border-radius: 10px;
+    }
+    .rep{
+      display: flex !important;
+      gap: 20px;
+      align-items: center;
     }
     .make,.jah{
       padding: 8px 15px;
@@ -476,6 +481,10 @@
       }
       .aso{
         flex-direction: column !important;
+      }
+      .zund{
+        flex-direction: column;
+        align-items: cente;
       }
       .coma h1{
         font-size: 30px;
