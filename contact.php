@@ -1,8 +1,57 @@
+<?php
+require 'connect.php';
+
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
+    $firstname = $_POST['firstname'] ?? '';
+    $lastname = $_POST['lastname'] ?? '';
+    $email = $_POST['email'] ?? '';
+    $phone = $_POST['phone'] ?? '';
+    $contact_method = $_POST['contact_method'] ?? '';
+    $interest = $_POST['interest'] ?? '';
+    $preferred_time = $_POST['preferred_time'] ?? '';
+    $location = $_POST['location'] ?? '';
+    $know_about = $_POST['know'] ?? '';
+    $message = $_POST['message'] ?? '';
+
+    $sql = "INSERT INTO contacts (firstname, lastname, email, phone, contact_method, interest, preferred_time, location, know_about, message) 
+            VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+    
+    $stmt = $pdo->prepare($sql);
+    $stmt->execute([
+        $firstname, $lastname, $email, $phone, $contact_method, $interest, $preferred_time, $location, $know_about, $message
+    ]);
+
+    $to = "admin@rayanncare.com";
+    $subject = "New Contact Submission from $firstname $lastname";
+    $body = "
+        <h2>New Contact Form Submission</h2>
+        <p><strong>Name:</strong> $firstname $lastname</p>
+        <p><strong>Email:</strong> $email</p>
+        <p><strong>Phone:</strong> $phone</p>
+        <p><strong>Preferred Contact Method:</strong> $contact_method</p>
+        <p><strong>Interest:</strong> $interest</p>
+        <p><strong>Preferred Time:</strong> $preferred_time</p>
+        <p><strong>Location:</strong> $location</p>
+        <p><strong>Heard About Us:</strong> $know_about</p>
+        <p><strong>Message:</strong><br>$message</p>
+    ";
+    $headers = "MIME-Version: 1.0" . "\r\n";
+    $headers .= "Content-type:text/html;charset=UTF-8" . "\r\n";
+    $headers .= "From: no-reply@rayanncare.com" . "\r\n";
+
+    mail($to, $subject, $body, $headers);
+
+    echo "Thank you! Your submission has been received.";
+}
+?>
+
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
   <title>Rayann Care</title>
+  <link rel="icon" href="./images/image 1.png" type="image/png">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.6/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-4Q6Gf2aSP4eDXB8Miphtr37CMZZQ5oXLH2yaXMJ2w8e2ZtHTl7GptT4jmndRuHDT" crossorigin="anonymous">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css">
@@ -42,9 +91,9 @@
                                 <a class="nav-link" href="service.html">Services</a>
                             </li>
                             </ul>
-                            <form class="d-flex gap-3 aso" role="search">
-                                 <a href="contact.html" class="">Book an Appointment</a>
-                                <a href="https://rayanncare.clientsecure.me" target="_blank">Signin</a>
+                            <form class="d-flex gap-3 aso " role="search">
+                                 <a href="contact.php" class="farm">Book an Appointment</a>
+                                <a href="https://rayanncare.clientsecure.me" target="_blank" class="gaadem">Signin</a>
                             </form>
                         </div>
                     </div>
@@ -75,25 +124,25 @@
                 <div class="container">
                     <div class="bel py-4 px-5">
                         <h4 class="pt-3 text-center">Enter Your Details</h4>
-                        <form action="" class="mt-5">
+                        <form action="" class="mt-5" method="POST">
                             <div class="row">
                                 <div class="col-12 col-md-12 col-lg-6">
                                     <div>
                                         <label for="Name">Name</label>
-                                        <input type="text" class="mt-1 far" placeholder="Enter Your Firstname" name="name" id="">
+                                        <input type="text" class="mt-1 far" placeholder="Enter Your Firstname" name="firstname" id="">
                                     </div>
                                 </div>
                                 <div class="col-12 col-md-12 col-lg-6">
                                     <div>
                                         <label for="Name">Last Name</label>
-                                        <input type="text" class="mt-1 far" placeholder="Enter Your Lastname" name="name" id="">
+                                        <input type="text" class="mt-1 far" placeholder="Enter Your Lastname" name="lastname" id="">
                                     </div>
                                 </div>
                             </div>
                             <div class="col-12 col-md-12 col-lg-12" style="margin-top: 40px;">
                                 <div>
                                     <label for="Email">Email</label>
-                                    <input type="email" class="mt-1 far" placeholder="Enter Your Email Address" name="name" id="">
+                                    <input type="email" class="mt-1 far" placeholder="Enter Your Email Address" name="email" id="">
                                 </div>
                             </div>
                             <div class="col-12 col-md-12 col-lg-12" style="margin-top: 40px;">
@@ -106,11 +155,11 @@
                                 <div>
                                     <label for="Phone">Preferred Contact Method:</label> <br>
                                     <div class="d-flex align-items-center gap-3 mt-3">
-                                        <input type="radio" name="email" class="for " id="">
-                                         <label class="radio-label" for="email">Email</label>
+                                        <input type="radio" name="contact_method" class="for " value="email" id="">
+                                         <label class="radio-label" for="">Email</label>
                                     </div>
                                     <div class="d-flex align-items-center gap-3 mt-3">
-                                        <input type="radio" name="phone" class="for " id="">
+                                        <input type="radio" name="contact_method" class="for " id="" value="phone">
                                          <label class="radio-label" for="phone">Phone</label>
                                     </div>
                                 </div>
@@ -119,19 +168,19 @@
                                 <div>
                                     <label for="Phone">What are you interested in?</label> <br>
                                     <div class="d-flex align-items-center gap-3 mt-3">
-                                        <input type="radio" name="Evalaution" class="for " id="">
+                                        <input type="radio" name="interest" value="Evalaution" class="for " id="">
                                          <label class="radio-label" for="Evalaution">Evalaution</label>
                                     </div>
                                     <div class="d-flex align-items-center gap-3 mt-3">
-                                        <input type="radio" name="Mini EMDR intensives" class="for " id="">
+                                        <input type="radio" value="Mini EMDR intensives" name="interest" class="for " id="">
                                          <label class="radio-label" for="Mini EMDR intensives">Mini EMDR intensives</label>
                                     </div>
                                     <div class="d-flex align-items-center gap-3 mt-3">
-                                        <input type="radio" name="Supervision" class="for " id="">
+                                        <input type="radio" value="Supervision" name="interest" class="for " id="">
                                          <label class="radio-label" for="Supervision">Supervision</label>
                                     </div>
                                     <div class="d-flex align-items-center gap-3 mt-3">
-                                        <input type="radio" name="Referral" class="for " id="">
+                                        <input type="radio" value="Referral" name="interest" class="for " id="">
                                          <label class="radio-label" for="Referral">Referral</label>
                                     </div>
                                 </div>
@@ -140,15 +189,15 @@
                                 <div>
                                     <label for="Phone">Preferred Time for Session</label> <br>
                                     <div class="d-flex align-items-center gap-3 mt-3">
-                                        <input type="radio" name="Morning" class="for " id="">
+                                        <input type="radio" name="preferred_time" class="for " id="" value="Morning">
                                          <label class="radio-label" for="Morning">Morning</label>
                                     </div>
                                     <div class="d-flex align-items-center gap-3 mt-3">
-                                        <input type="radio" name="Afternoon" class="for " id="">
+                                        <input type="radio" name="preferred_time" class="for " id="" value="Afternoon">
                                          <label class="radio-label" for="Afternoon">Afternoon</label>
                                     </div>
                                     <div class="d-flex align-items-center gap-3 mt-3">
-                                        <input type="radio" name="Evening" class="for " id="">
+                                        <input type="radio" name="preferred_time" class="for " id="" value="Evening">
                                          <label class="radio-label" for="Evening">Evening</label>
                                     </div>
                                 </div>
@@ -157,19 +206,19 @@
                                 <div>
                                     <label for="Phone">Where are you reaching out from?</label> <br>
                                     <div class="d-flex align-items-center gap-3 mt-3">
-                                        <input type="radio" name="North Carolina" class="for " id="">
+                                        <input type="radio" name="location" class="for " id="" value="North Carolina">
                                          <label class="radio-label" for="North Carolina">North Carolina</label>
                                     </div>
                                     <div class="d-flex align-items-center gap-3 mt-3">
-                                        <input type="radio" name="Florida" class="for " id="">
+                                        <input type="radio" name="location" class="for " id="" value="Florida">
                                          <label class="radio-label" for="Florida">Florida</label>
                                     </div>
                                     <div class="d-flex align-items-center gap-3 mt-3">
-                                        <input type="radio" name="Alabama" class="for " id="">
+                                        <input type="radio" name="location" class="for " id="" value="Alabama">
                                          <label class="radio-label" for="Alabama">Alabama</label>
                                     </div>
                                     <div class="d-flex align-items-center gap-3 mt-3">
-                                        <input type="radio" name="Texas" class="for " id="">
+                                        <input type="radio" name="location" class="for " id="" value="Texas">
                                          <label class="radio-label" for="Texas">Texas</label>
                                     </div>
                                 </div>
@@ -186,7 +235,7 @@
                                 </div>
                             </div>
                             <div class="d-flex align-items-center justify-content-center">
-                                 <button class="mt-4" type="button" onclick="window.location.href='mailto:Info@rayanncare.com'">Submit</button>
+                                 <button class="mt-4" type="submit">Submit</button>
                             </div>
                         </form>
                     </div>
@@ -277,7 +326,7 @@
                                     </div>
                                     <div class="d-flex gap-2 pt-2">
                                         <i class="bi bi-arrow-up-right"></i>
-                                        <a href="contact.html"><p>Bookings / Contact</p></a>
+                                        <a href="contact.php"><p>Bookings / Contact</p></a>
                                     </div>
                                     <div class="d-flex gap-2 pt-2">
                                         <i class="bi bi-arrow-up-right"></i>
@@ -321,7 +370,7 @@
                                     </div>
                                     <div class="d-flex gap-2 pt-2">
                                         <i class="bi bi-arrow-up-right"></i>
-                                        <a href="contact.html"><p>Payment & Insurance</p></a>
+                                        <a href="contact.php"><p>Payment & Insurance</p></a>
                                     </div>
                                 </div>
                             </div>

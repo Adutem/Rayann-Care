@@ -1,8 +1,26 @@
+<?php
+require 'connect.php'; // This connects to the DB
+
+if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+    $fullname = $_POST['fullname'] ?? '';
+    $service_id = $_POST['service_id'] ?? '';
+    $message = $_POST['message'] ?? '';
+    $service_used = $_POST['service_used'] ?? '';
+    $location = $_POST['location'] ?? '';
+
+    $stmt = $pdo->prepare("INSERT INTO testimonies (fullname, service_id, message, service_used, location) VALUES (?, ?, ?, ?, ?)");
+    $stmt->execute([$fullname, $service_id, $message, $service_used, $location]);
+
+    echo "Testimony submitted successfully!";
+}
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
   <title>Rayann Care</title>
+  <link rel="icon" href="./images/image 1.png" type="image/png">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.6/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-4Q6Gf2aSP4eDXB8Miphtr37CMZZQ5oXLH2yaXMJ2w8e2ZtHTl7GptT4jmndRuHDT" crossorigin="anonymous">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css">
@@ -33,10 +51,10 @@
                         <a class="nav-link" href="service.html">Services</a>
                         </li>
                     </ul>
-                    <form class="d-flex gap-3 aso" role="search">
-                         <a href="contact.html" class="">Book an Appointment</a>
-                        <a href="https://rayanncare.clientsecure.me" target="_blank">Signin</a>
-                    </form>
+                    <form class="d-flex gap-3 aso " role="search">
+                                 <a href="contact.php" class="farm">Book an Appointment</a>
+                                <a href="https://rayanncare.clientsecure.me" target="_blank" class="gaadem">Signin</a>
+                            </form>
                     <div class="ms-3"></div>
                     </div>
                 </div>
@@ -46,21 +64,21 @@
                 <div class="container">
                     <div class="shara">
                         <h1 class="text-center">Testimonies</h1>
-                        <form action="">
+                        <form action="" method="POST">
                             <div class="row pt-3">
                                 <div class="col-12 col-md-12 col-lg-8">
                                     <div class="eru">
                                         <div>
                                             <label for="">Name</label>
-                                            <input type="text" class="mt-2" placeholder="Enter Fullname" name="" id="">
+                                            <input type="text" class="mt-2" placeholder="Enter Fullname" name="fullname" id="">
                                         </div>
                                         <div class="pt-4">
                                             <label for="" class="pt-3">Client’s Service ID </label>
-                                            <input type="text" class="mt-2" placeholder="Enter Service ID" name="" id="">
+                                            <input type="text" class="mt-2" placeholder="Enter Service ID" name="service_id" id="">
                                         </div>
                                         <div class="pt-4">
                                             <label for="" class="pt-3">Submit Testimony</label>
-                                            <textarea name="" class="mt-2" placeholder="Enter a Message" id=""></textarea>
+                                            <textarea name="message" class="mt-2" placeholder="Enter a Message" id=""></textarea>
                                         </div>
                                     </div>
                                 </div>
@@ -69,44 +87,44 @@
                                         <div>
                                             <label for="Phone">What Service did you use?</label> <br>
                                             <div class="d-flex align-items-center gap-3 mt-3">
-                                                <input type="radio" name="Evalaution" class="for " id="">
+                                                <input type="radio" name="service_used" class="for " id="" value="Evalaution">
                                                 <label class="radio-label" for="Evalaution">Evalaution</label>
                                             </div>
                                             <div class="d-flex align-items-center gap-3 mt-3">
-                                                <input type="radio" name="Mini EMDR intensives" class="for " id="">
+                                                <input type="radio" name="service_used" class="for " id="" value="Mini EMDR intensives">
                                                 <label class="radio-label" for="Mini EMDR intensives">Mini EMDR intensives</label>
                                             </div>
                                             <div class="d-flex align-items-center gap-3 mt-3">
-                                                <input type="radio" name="Supervision" class="for " id="">
+                                                <input type="radio" name="service_used" class="for " id="" value="Supervision">
                                                 <label class="radio-label" for="Supervision">Supervision</label>
                                             </div>
                                         </div>
                                         <div class="pt-4">
                                             <label for="Phone">Where are you reaching out from?</label> <br>
                                             <div class="d-flex align-items-center gap-3 mt-3">
-                                                <input type="radio" name="North Carolina" class="for " id="">
+                                                <input type="radio" name="location" value="North Carolina" class="for " id="">
                                                 <label class="radio-label" for="North Carolina">North Carolina</label>
                                             </div>
                                             <div class="d-flex align-items-center gap-3 mt-3">
-                                                <input type="radio" name="Florida" class="for " id="">
+                                                <input type="radio" name="location" value="Florida" class="for " id="">
                                                 <label class="radio-label" for="Florida">Florida</label>
                                             </div>
                                             <div class="d-flex align-items-center gap-3 mt-3">
-                                                <input type="radio" name="Alabama" class="for " id="">
+                                                <input type="radio" name="location" value="Alabama" class="for " id="">
                                                 <label class="radio-label" for="Alabama">Alabama</label>
                                             </div>
                                             <div class="d-flex align-items-center gap-3 mt-3">
-                                                <input type="radio" name="Texas" class="for " id="">
+                                                <input type="radio" name="location" value="Texas" class="for " id="">
                                                 <label class="radio-label" for="Texas">Texas</label>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
                             </div>
+                            <div class="d-flex align-items-center justify-content-center mt-5 ham">
+                                <button type="submit">Submit</button>
+                            </div>
                         </form>
-                        <div class="d-flex align-items-center justify-content-center mt-5 ham">
-                            <a href="Admin@rayanncare.com"><button>Submit</button></a>
-                        </div>
                     </div>
                 </div>
             </div>
@@ -136,7 +154,7 @@
                                     </div>
                                     <div class="d-flex gap-2 pt-2">
                                         <i class="bi bi-arrow-up-right"></i>
-                                        <a href="contact.html"><p>Bookings / Contact</p></a>
+                                        <a href="contact.php"><p>Bookings / Contact</p></a>
                                     </div>
                                     <div class="d-flex gap-2 pt-2">
                                         <i class="bi bi-arrow-up-right"></i>
@@ -180,7 +198,7 @@
                                     </div>
                                     <div class="d-flex gap-2 pt-2">
                                         <i class="bi bi-arrow-up-right"></i>
-                                        <a href="contact.html"><p>Payment & Insurance</p></a>
+                                        <a href="contact.php"><p>Payment & Insurance</p></a>
                                     </div>
                                 </div>
                             </div>
