@@ -10,6 +10,7 @@
  <link rel="stylesheet" href="index.css">
  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/17.0.19/css/intlTelInput.min.css" />
  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/17.0.19/css/intlTelInput.css" />
+     <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/toastify-js/src/toastify.min.css">
 </head>
 <body>
     <div class="overflow-x-hidden">
@@ -56,21 +57,23 @@
                             <i class="bi bi-star-fill"></i>
                             <i class="bi bi-star"></i>
                         </div>
-                        <div class="pt-3">
-                            <h6 class="mive">Give us a Feedbacks or Suggestions</h6>
-                            <textarea name="" placeholder="Enter a Message" id=""></textarea>
-                        </div>
-                        <div class="d-flex align-items-center justify-content-center mt-5 ham">
-                            <a href="contact.html">
-                                <button>Submit</button>
-                            </a>
-                        </div>
+                        <form action="/api/feedback/create-feeback" method="post" id="contactForm">
+                            <div class="pt-3">
+                                <h6 class="mive">Give us a Feedbacks or Suggestions</h6>
+                                <textarea name="message" placeholder="Enter a Message" id=""></textarea>
+                            </div>
+                            <div class="d-flex align-items-center justify-content-center mt-5 ham">
+                                <button type="submit">Submit</button>
+                            </div>
+                        </form>    
                     </div>
                 </div>
             </div>
             <div class="section"></div>
         </div>  
     </div>
+    
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/toastify-js"></script>
  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.6/dist/js/bootstrap.bundle.min.js" integrity="sha384-j1CDi7MgGQ12Z7Qab0qlWQ/Qqz24Gc6BM0thvEMVjHnfYGF0rmFCozFSxQBxwHKO" crossorigin="anonymous"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/17.0.19/js/intlTelInput.min.js"></script>
 <script>
@@ -80,6 +83,68 @@
     initialCountry: "ng", 
     preferredCountries: ["ng", "gh", "us", "gb"],
     utilsScript: "https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/17.0.19/js/utils.js"
+  });
+</script>
+<script>
+  const form = document.getElementById('contactForm');
+  const submitBtn = form.querySelector('button[type="submit"]');
+
+  form.addEventListener('submit', async (e) => {
+    e.preventDefault();
+
+    submitBtn.disabled = true;
+    submitBtn.textContent = "Submitting...";
+
+    const formData = new FormData(form);
+    const data = Object.fromEntries(formData.entries());
+
+    try {
+      const res = await fetch('/api/feedback/create-feedback', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(data)
+      });
+
+      const result = await res.json();
+
+      if (res.ok) {
+        Toastify({
+          text: result.message || "Contact sent successfully!",
+          duration: 4000,
+          gravity: "top",
+          position: "center",
+          backgroundColor: "#4CAF50",
+          close: true
+        }).showToast();
+
+        form.reset();
+      } else {
+        Toastify({
+          text: result.message || result.error || "Something went wrong",
+          duration: 4000,
+          gravity: "top",
+          position: "center",
+          backgroundColor: "#F44336",
+          close: true
+        }).showToast();
+      }
+
+    } catch (err) {
+      console.error(err);
+      Toastify({
+        text: "Submission failed. Please try again.",
+        duration: 4000,
+        gravity: "top",
+        position: "center",
+        backgroundColor: "#F44336",
+        close: true
+      }).showToast();
+    } finally {
+        submitBtn.disabled = false;
+        submitBtn.textContent = "Submit";
+    }
   });
 </script>
 </body>

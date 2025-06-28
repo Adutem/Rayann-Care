@@ -3,6 +3,7 @@ import dotenv from "dotenv"
 import connectDb from "./connect/connectDB.js"
 import contactRouter from "./router/contactroute.js"
 import testimonialRouter from "./router/testimonialroute.js"
+import feedbackRouter from "./router/feedbackroute.js"
 import path from "path"
 
 dotenv.config()
@@ -17,6 +18,8 @@ const PORT = process.env.PORT || 5001
 
 app.use("/api/contact", contactRouter)
 app.use("/api/testimonial", testimonialRouter)
+
+app.use("/api/feedback", feedbackRouter)
 
 // app.get("/", (req, res) => {
 //     res.send(`Hello world`)
