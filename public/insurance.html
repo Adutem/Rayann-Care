@@ -10,8 +10,6 @@
  <link rel="stylesheet" href="index.css">
  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/17.0.19/css/intlTelInput.min.css" />
  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/17.0.19/css/intlTelInput.css" />
- <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/toastify-js/src/toastify.min.css">
-
 </head>
 <body>
     <div class="overflow-x-hidden">
@@ -43,77 +41,70 @@
                     <div class="ms-3"></div>
                     </div>
                 </div>
-            </nav>   
+            </nav>  
             <div class="section"></div>    
-            <div class="section">
-                <div class="container">
-                    <div class="shara">
-                        <h1 class="text-center">Testimonies</h1>
-                        <form action="/api/testimonial/create-testimonial" id="testimonialForm" method="POST">
-                            <div class="row pt-3">
-                                <div class="col-12 col-md-12 col-lg-8">
-                                    <div class="eru">
-                                        <div>
-                                            <label for="">Name</label>
-                                            <input type="text" class="mt-2" placeholder="Enter Fullname" name="fullname" id="">
-                                        </div>
-                                        <div class="pt-4">
-                                            <label for="" class="pt-3">Client’s Service ID </label>
-                                            <input type="text" class="mt-2" placeholder="Enter Service ID" name="service_id" id="">
-                                        </div>
-                                        <div class="pt-4">
-                                            <label for="" class="pt-3">Submit Testimony</label>
-                                            <textarea name="message" class="mt-2" placeholder="Enter a Message" id=""></textarea>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-12 col-md-12 col-lg-4">
-                                    <div>
-                                        <div>
-                                            <label for="Phone">What Service did you use?</label> <br>
-                                            <div class="d-flex align-items-center gap-3 mt-3">
-                                                <input type="radio" name="service_used" class="for " id="" value="Evalaution">
-                                                <label class="radio-label" for="Evalaution">Evalaution</label>
-                                            </div>
-                                            <div class="d-flex align-items-center gap-3 mt-3">
-                                                <input type="radio" name="service_used" class="for " id="" value="Mini EMDR intensives">
-                                                <label class="radio-label" for="Mini EMDR intensives">Mini EMDR intensives</label>
-                                            </div>
-                                            <div class="d-flex align-items-center gap-3 mt-3">
-                                                <input type="radio" name="service_used" class="for " id="" value="Supervision">
-                                                <label class="radio-label" for="Supervision">Supervision</label>
-                                            </div>
-                                        </div>
-                                        <div class="pt-4">
-                                            <label for="Phone">Where are you reaching out from?</label> <br>
-                                            <div class="d-flex align-items-center gap-3 mt-3">
-                                                <input type="radio" name="location" value="North Carolina" class="for " id="">
-                                                <label class="radio-label" for="North Carolina">North Carolina</label>
-                                            </div>
-                                            <div class="d-flex align-items-center gap-3 mt-3">
-                                                <input type="radio" name="location" value="Florida" class="for " id="">
-                                                <label class="radio-label" for="Florida">Florida</label>
-                                            </div>
-                                            <div class="d-flex align-items-center gap-3 mt-3">
-                                                <input type="radio" name="location" value="Alabama" class="for " id="">
-                                                <label class="radio-label" for="Alabama">Alabama</label>
-                                            </div>
-                                            <div class="d-flex align-items-center gap-3 mt-3">
-                                                <input type="radio" name="location" value="Texas" class="for " id="">
-                                                <label class="radio-label" for="Texas">Texas</label>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="d-flex align-items-center justify-content-center mt-5 ham">
-                                <button type="submit" id="submitBtn">Submit</button>
-                            </div>
-                        </form>
+             <div class="section">
+            <div class="container">
+                <div class="joy rounded-3 px-5 py-4">
+                    <h1>Payment & Insurance</h1>
+                    <p class="pt-3">At RayAnn Care Psychological Services, we are committed to providing high-quality, accessible care. Below is important information regarding payment options, insurance, and financing:</p>
+                    <div class="pt-3">
+                        <div class="roun"></div>
                     </div>
+                    <h1 class="pt-4">Private Pay Services</h1>
+                    <div>
+                        <p>We are a private pay practice and do not accept insurance at this time. This allows us to provide you with the utmost confidentiality, flexibility, and personalized care without the limitations of insurance networks.</p>
+                        <p>Current Service Fees:</p>
+                        <ul>
+                            <li><p>Immigration Evaluations – $1,000 (completed within 7 business days)</p></li>
+                            <li><p>Mini EMDR Intensives – $1,875 (3-day package)</p></li>
+                            <li><p>Group Clinical Supervision (Social Work Students) – $50 per session</p></li>
+                        </ul>
+                    </div>
+                    <div class="pt-3">
+                        <div class="roun"></div>
+                    </div>
+                    <h1 class="pt-4">Payment Methods Accepted</h1>
+                    <p class="pt-3">We accept the following payment methods:</p>
+                    <div class="pt-3">
+                        <ul>
+                            <li><p>All major credit/debit cards</p></li>
+                            <li><p>HSA/FSA cards (check with your plan)</p></li>
+                            <li><p>Zelle or ACH bank transfer</p></li>
+                            <li><p>Secure payments through our client portal (via SimplePractice)</p></li>
+                        </ul>
+                    </div>
+                    
+                    <h1 class="pt-4">Flexible Payment Options</h1>
+                    <div>
+                        <p>To help make services more accessible, we offer financing through trusted partners:</p>
+                        <ul>
+                            <li><p>CareCredit – Healthcare financing with 0% interest promotional plans (for eligible clients)</p></li>
+                        </ul>
+                        <p>You will see these options during checkout or can request financing details prior to your appointment.</p>
+                    </div>
+                    <div class="pt-3">
+                        <div class="roun"></div>
+                    </div>
+                    <h1 class="pt-4">Superbills for Reimbursement</h1>
+                    <div>
+                        <p>Although we do not bill insurance directly, we can provide a superbill upon request for eligible services. You may submit this to your insurance provider for potential out-of-network reimbursement. Please check with your insurance carrier for details.</p>
+                    </div>
+                    <div class="pt-3">
+                        <div class="roun"></div>
+                    </div>
+                    <h1 class="pt-4">Cancellations & Late Payments</h1>
+                    <p>We require 24-hour notice for cancellations or rescheduling. Late cancellations or no-shows may be charged the full session fee. Late payments may incur additional administrative fees.</p>
+                    <div class="pt-3">
+                        <div class="roun"></div>
+                    </div>
+                    <h1 class="pt-4">Have Questions?</h1>
+                    <p>We are happy to assist you with any questions about pricing, financing, or superbill requests. Please reach out to us at info@rayanncare.com or 1-888-310-6692.</p>
                 </div>
             </div>
-            <div class="section">
+        </div>
+            <div class="section"></div>
+             <div class="section">
                 <footer>
                     <div class="container">
                         <div class="row py-5 text-white">
@@ -197,7 +188,6 @@
             </div>
         </div>  
     </div>
-    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/toastify-js"></script>
  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.6/dist/js/bootstrap.bundle.min.js" integrity="sha384-j1CDi7MgGQ12Z7Qab0qlWQ/Qqz24Gc6BM0thvEMVjHnfYGF0rmFCozFSxQBxwHKO" crossorigin="anonymous"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/17.0.19/js/intlTelInput.min.js"></script>
 <script>
@@ -209,66 +199,7 @@
     utilsScript: "https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/17.0.19/js/utils.js"
   });
 </script>
-<script>
-  const form = document.getElementById('testimonialForm');
-  const submitBtn = document.getElementById('submitBtn');
-
-  form.addEventListener('submit', async (e) => {
-    e.preventDefault();
-
-    submitBtn.disabled = true;
-    submitBtn.textContent = "Submitting...";
-
-    const formData = new FormData(form);
-    const data = Object.fromEntries(formData.entries());
-
-    try {
-      const res = await fetch('/api/testimonial/create-testimonial', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json'
-        },
-        body: JSON.stringify(data)
-      });
-
-      const result = await res.json();
-
-      if (res.ok) {
-        form.reset();
-        Toastify({
-          text: result.message || "Testimonial sent successfully!",
-          duration: 4000,
-          gravity: "top",
-          position: "center",
-          backgroundColor: "#4CAF50",
-          close: true
-        }).showToast();
-      } else {
-        Toastify({
-          text: result.message || result.error || "Submission failed.",
-          duration: 4000,
-          gravity: "top",
-          position: "center",
-          backgroundColor: "#F44336",
-          close: true
-        }).showToast();
-      }
-
-    } catch (err) {
-      console.error(err);
-      Toastify({
-        text: "An unexpected error occurred.",
-        duration: 4000,
-        gravity: "top",
-        position: "center",
-        backgroundColor: "#F44336",
-        close: true
-      }).showToast();
-    } finally {
-      submitBtn.disabled = false;
-      submitBtn.textContent = "Submit";
-    }
-  });
-</script>
-
-
+</body>
+</html>
+ 
+ 
