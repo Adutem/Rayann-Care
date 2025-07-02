@@ -31,7 +31,7 @@
       font-weight: 700;
     }
     .som h2{
-      font-size: 70px;
+      font-size: 50px;
       font-weight: 700;
     }
     .som p{
@@ -148,10 +148,14 @@
       width: 20px;
     }
     .idan{
-      background-color: #4C1474;
+      width: 100%;
+      background: linear-gradient(to right, #1A0528, #3C0D5E, #290940);
     }
-    .car p,.car i{
+    .car i{
       font-size: 17px;
+    }
+     .car p{
+      font-size: 25px;
     }
     .don h2{
       color: #4C1474;
