@@ -1,4 +1,5 @@
 import testimonialSchema from "../schema/testimonialSchema.js";
+import { transporter } from "../helper/mailer.js";
 
 export const createTestimonial = async (req, res) => {
 
@@ -23,7 +24,19 @@ export const createTestimonial = async (req, res) => {
         });
 
         await createNewTestimonial.save()
-
+         await transporter.sendMail({
+                    from: `"Website Contact" <${process.env.MAIL_USER}>`,
+                    to: `<${process.env.MAIL_USER}>`, // admin email here
+                    subject: "New Contact Form Submission",
+                    html: `
+                        <h3>New Contact Message</h3>
+                        <p><strong>Name:</strong> ${fullname} </p>
+                        <p><strong>Email:</strong> ${service_id}</p>
+                        <p><strong>Phone:</strong> ${message}</p>
+                        <p><strong>Preferred Contact:</strong> ${service_used}</p>
+                        <p><strong>Interest:</strong> ${location}</p>
+                    `
+                });
         res.status(201).json({
             success : true,
             message : "Testimonial sent successfully",
