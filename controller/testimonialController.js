@@ -31,10 +31,10 @@ export const createTestimonial = async (req, res) => {
                     html: `
                         <h3>New Contact Message</h3>
                         <p><strong>Name:</strong> ${fullname} </p>
-                        <p><strong>Email:</strong> ${service_id}</p>
-                        <p><strong>Phone:</strong> ${message}</p>
-                        <p><strong>Preferred Contact:</strong> ${service_used}</p>
-                        <p><strong>Interest:</strong> ${location}</p>
+                        <p><strong>Service Id:</strong> ${service_id}</p>
+                        <p><strong>Message:</strong> ${message}</p>
+                        <p><strong>Service Used:</strong> ${service_used}</p>
+                        <p><strong>Location:</strong> ${location}</p>
                     `
                 });
         res.status(201).json({
