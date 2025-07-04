@@ -21,9 +21,9 @@ export const createfeedback = async (req, res) => {
 
         // Send email to admin
         await transporter.sendMail({
-            from: `"Website Contact" <${process.env.MAIL_USER}>`,
+            from: `"Website Testimonial" <${process.env.MAIL_USER}>`,
             to: `<${process.env.MAIL_USER}>`, // admin email here
-            subject: "New Contact Form Submission",
+            subject: "New Testimonail Form Submission",
             html: `
                 <p><strong>Message:</strong></p>
                 <p>${message}</p>

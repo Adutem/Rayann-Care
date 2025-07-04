@@ -27,7 +27,7 @@ export const createTestimonial = async (req, res) => {
          await transporter.sendMail({
                     from: `"Website Contact" <${process.env.MAIL_USER}>`,
                     to: `<${process.env.MAIL_USER}>`, // admin email here
-                    subject: "New Contact Form Submission",
+                    subject: "New Testimonial Form Submission",
                     html: `
                         <h3>New Contact Message</h3>
                         <p><strong>Name:</strong> ${fullname} </p>
